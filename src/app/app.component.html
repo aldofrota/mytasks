@@ -1,0 +1,69 @@
+<div class="h-screen bg-gray-100 select-none">
+  <div class="flex h-full w-full">
+    <div class="h-full 2xl:w-[10%] flex items-center justify-center">
+      <div class="h-full w-full overflow-y-auto py-4 px-3 bg-gray-800">
+        <div
+          class="flex items-center justify-center font-semibold rounded-lg text-white py-4 mb-10 glass"
+        >
+          <img
+            class="h-8 mr-1"
+            src="/assets/logoMyTasks.png"
+            alt="Logo do projeto MyTasks"
+          />
+          <span class="text-xl">MyTasks</span>
+        </div>
+        <ul class="space-y-2">
+          <li>
+            <a
+              routerLink="/"
+              class="flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700"
+            >
+              <span class="material-symbols-outlined"> dashboard </span>
+              <span class="ml-3">Dashboard</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              routerLink="/tasks"
+              class="flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700"
+            >
+              <span class="material-symbols-outlined"> task_alt </span>
+              <span class="flex-1 ml-3 whitespace-nowrap">Taks</span>
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/login"
+              class="flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700"
+            >
+              <span class="material-symbols-outlined"> logout </span>
+              <span class="flex-1 ml-3 whitespace-nowrap">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="h-full w-[90%] bg-gray-700 overflow-auto">
+      <div class="absolute right-5 top-5">
+        <div
+          class="h-10 flex items-center bg-gray-800 overflow-visible rounded-md"
+        >
+          <div
+            class="h-14 w-14 rounded-full bg-gray-800 -translate-x-4 flex items-center justify-center"
+          >
+            <div
+              class="h-10 w-10 flex items-center justify-center bg-white rounded-full"
+            >
+              <span class="material-symbols-outlined"> face </span>
+            </div>
+          </div>
+          <div class="mr-4 font-semibold text-white">
+            <span>Usuário</span>
+          </div>
+        </div>
+      </div>
+      <router-outlet> </router-outlet>
+    </div>
+  </div>
+</div>
