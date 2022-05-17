@@ -3,7 +3,7 @@
     class="h-[10%] text-white flex items-center justify-center border-b border-gray-600"
   >
     <div class="text-3xl font-semibold">
-      <span>Tasks {{ tasks.length }}</span>
+      <span>Tasks</span>
     </div>
   </div>
   <div
@@ -11,50 +11,43 @@
   >
     <div
       *ngFor="let task of tasks"
-      class="h-[200px] w-[300px] p-2 m-5 text-white glass rounded-md italic border-t-8"
+      class="h-[200px] w-[300px] p-2 m-5 text-white glass rounded-md italic border-t-8 transition-all duration-500"
+      (dblclick)="doubleClick($event, task.id)"
+      id="{{ task.id }}"
     >
       <div class="flex justify-between border-b border-gray-600 p-1">
         <input
-          class="text-2xl max-w-[85%] bg-transparent overflow-hidden text-ellipsis italic outline-none disabled:opacity-50"
+          class="text-2xl max-w-[85%] bg-transparent overflow-hidden text-ellipsis italic outline-none disabled:opacity-50 cursor-pointer"
           type="text"
-          value="{{ task.title }}"
           disabled
+          placeholder="Digite o titulo..."
+          (blur)="onBlur($event, task.id)"
+          value="{{ task.title }}"
         />
-        <span class="text-gray-400">{{ task.time }}</span>
+        <span class="text-gray-400">{{ task.openAt }}</span>
       </div>
       <div class="p-1 font-extralight">
         <textarea
           class="h-full w-full p-1 pr-3 bg-transparent text-ellipsis italic outline-none disabled:opacity-50 resize-none overflow-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
           rows="5"
+          disabled
+          placeholder="Digite uma descrição..."
+          (blur)="onBlur($event, task.id)"
           >{{ task.description }}</textarea
         >
       </div>
       <button
         class="absolute bottom-2 right-2 cursor-pointer"
-        mat-flat-button
-        [matMenuTriggerFor]="appMenu"
+        (click)="deleteTask(task.id)"
       >
-        <span class="material-symbols-outlined"> more_horiz </span>
+        <span class="material-symbols-rounded mr-2"> delete </span>
       </button>
-      <mat-menu #appMenu="matMenu" yPosition="above" xPosition="before">
-        <button mat-menu-item>
-          <div class="flex items-center">
-            <span class="material-symbols-outlined mr-2"> edit </span>
-            <span>To edit</span>
-          </div>
-        </button>
-        <button mat-menu-item>
-          <div class="flex items-center">
-            <span class="material-symbols-rounded mr-2"> delete </span>
-            <span>To delete</span>
-          </div>
-        </button>
-      </mat-menu>
     </div>
   </div>
   <div class="absolute bottom-5 right-5">
     <span
       class="material-symbols-outlined text-5xl text-white ml-2 mt-2 cursor-pointer transition-all active:scale-95"
+      (click)="addTask()"
     >
       playlist_add
     </span>
